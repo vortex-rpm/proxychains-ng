@@ -28,6 +28,7 @@ It supports TCP only (no UDP/ICMP etc).
 %makeinstall PREFIX=%{buildroot}
 %{__install} -p -D -m 0755 proxychains4 %{buildroot}%{_bindir}/proxychains4
 %{__install} -p -D -m 0644 libproxychains4.so %{buildroot}%{_libdir}/libproxychains4.so
+%{__install} -p -D -m 0644 src/proxychains.conf %{buildroot}%{_sysconfdir}/proxychains.conf
 
 %clean
 rm -rf %{buildroot}
@@ -36,6 +37,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/bin/proxychains4
 /usr/lib64/libproxychains4.so
+%config(noreplace) /etc/proxychains.conf
 %doc AUTHORS README TODO
 
 %changelog
